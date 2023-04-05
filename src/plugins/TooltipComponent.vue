@@ -5,13 +5,13 @@ import "tippy.js/dist/tippy.css";
 const props = defineProps({
   text: { type: String, required: true },
 });
-const input = ref(null);
+const targetElement = ref(null);
 let tippyInstance = null;
 const setUpTippy = () => {
   if (tippyInstance) {
     tippyInstance = null;
   }
-  tippyInstance = tippy(input.value, {
+  tippyInstance = tippy(targetElement.value.parentNode, {
     content: props.text,
   });
 }
@@ -23,5 +23,5 @@ onUpdated(() => {
 })
 </script>
 <template>
-  <span ref="input">Hi there {{ text }}</span>
+  <span ref="targetElement">{{ text }}</span>
 </template>
